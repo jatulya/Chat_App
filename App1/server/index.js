@@ -22,5 +22,15 @@ const io = new Server(server, {
     },
 });
 
+//initiate and detect if anyone is connected -> all other events only when if there is a connection
+io.on("Connection", (socket) =>{
+    console.log(socket.id);
+
+    //when user disconnects (eg-> closing tab)
+    socket.on("disconnect", ()=>{
+        console.log(`User disconnected ${socket.id}`);
+    })
+})
+
 //inorder to see the file running, update scripts in package.json
 // "start" : "nodemon index.js" -> when npm start is given nodemon should run the file index.js
