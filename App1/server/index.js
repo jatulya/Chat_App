@@ -7,30 +7,29 @@ const { Server } = require("socket.io") //Server interface already exists in soc
 const app = express() //instance of express -> configure routes, middlware
 app.use(cors()); //cors is a middleware
 
-//creating http server on port 300) -> reacts runs here
+//creating http server on port 3000) -> reacts runs here
 const server = http.createServer(app);
-server.listen(3000, ()=>{
-    console.log("Server started running")
-})
+
 //instantiating the server created above
 const io = new Server(server, {
     //Specifying the credentials and settings needs to be there in our project
     cors: {
-        origin: "https://localhost:3000", 
+        origin: "http://localhost:3000", 
         //which server is gonna be calling our socket.io server -> here, it's our local react host
         methods: ['GET', "POST"],
     },
 });
 
 //initiate and detect if anyone is connected -> all other events only when if there is a connection
-io.on("Connection", (socket) =>{
-    console.log(socket.id);
-
+io.on("connection", (socket) =>{
+    console.log(socket.id, "Connection established")
     //when user disconnects (eg-> closing tab)
     socket.on("disconnect", ()=>{
         console.log(`User disconnected ${socket.id}`);
     })
 })
 
-//inorder to see the file running, update scripts in package.json
-// "start" : "nodemon index.js" -> when npm start is given nodemon should run the file index.js
+//
+server.listen(3001, ()=>{
+    console.log("Server started running")
+})
