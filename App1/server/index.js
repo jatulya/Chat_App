@@ -22,15 +22,23 @@ const io = new Server(server, {
 
 //initiate and detect if anyone is connected -> all other events only when if there is a connection
 io.on("connection", (socket) =>{
+    
     console.log(socket.id, " Connection established")
     //when user disconnects (eg-> closing tab)
+    
     socket.on("join_room", (data) => {
         socket.join(data);
         console.log(`User with ID: ${socket.id} joined the room: ${data}`)
     })
+    
+    socket.on('send_msg', (data) => {
+        console.log(data)
+    })
+    
     socket.on("disconnect", ()=>{
         console.log(`User disconnected ${socket.id}`);
     })
+
 })
 
 //
