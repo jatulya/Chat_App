@@ -24,16 +24,21 @@ function App() {
 
   return (
     <div className="App">
-     My Chat App
-     <h3>Join Chat</h3> 
-     <input 
-        type='text' 
-        placeholder='Enter username' 
-        onChange = {(e) => {setUsername(e.target.value)}}
-      />
-     <input type='text' placeholder='Room ID: ' onChange = {(e) => {setRoom(e.target.value)}}/>
-     <button onClick={joinRoom}>Join the Room</button>
-     <Chat socket={socket} username={username} room={room} />
+      <div className='joinChatContainer'>       
+        <h3>Join Chat</h3> 
+        
+        <input 
+            type='text' 
+            placeholder='Enter username' 
+            onChange = {(e) => {setUsername(e.target.value)}}
+          />
+        
+        <input type='text' placeholder='Room ID: ' onChange = {(e) => {setRoom(e.target.value)}}/>
+        
+        <button onClick={joinRoom}>Join the Room</button>
+        
+        <Chat socket={socket} username={username} room={room} />
+      </div>
     </div>
   );
 }
