@@ -2,7 +2,8 @@
 const express = require('express'); //express -> web app framework of nodejs
 const http = require('http'); //http -> module from nodejs that creates webserver
 const cors = require('cors'); //cors -> cross origin reference sharing
-const { Server } = require("socket.io") //Server interface already exists in socketio lib
+const { Server } = require("socket.io"); //Server interface already exists in socketio lib
+const { isDataView } = require('util/types');
 
 const app = express() //instance of express -> configure routes, middlware
 app.use(cors()); //cors is a middleware
@@ -32,7 +33,8 @@ io.on("connection", (socket) =>{
     })
     
     socket.on('send_msg', (data) => {
-        console.log(data)
+        //emits the msg send to the socket to every user logged in to the same room
+        socket.to(data.room).emit("receive_msg", data);
     })
     
     socket.on("disconnect", ()=>{
