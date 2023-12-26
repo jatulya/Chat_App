@@ -27,3 +27,4 @@ In the client ->
  8. We map through this list and display each msg on the screen.
     we check the username of the message data. If it's the same as the logged in user,
     then we keep the id as you, else it is "other". different styles are given for the tag with id-s you and other
+ 9. we install react-scroll-to-bottom to have the chat automatically scroll down
