@@ -43,14 +43,15 @@ function Chat({socket, username, room}) {
         <div className='chat-body'>
           {msgList.map ((msgContent)=>{
             return (
-              <div className='message'>
+              <div className='message'
+              id = {msgContent.author === username ? "you" : "other"}>
                 <div>
                 <div className='message-content'>
                   <p>{msgContent.msg}</p>
                 </div>
                 <div className='message-meta'>
-                  <p>{msgContent.time}</p>
-                  <p>{msgContent.author}</p>
+                  <p id="time">{msgContent.time}</p>
+                  <p id="author"> {msgContent.author}</p>
                 </div>
                 </div>
               </div>
@@ -63,8 +64,10 @@ function Chat({socket, username, room}) {
                 type="text" 
                 placeholder='Write your message'
                 onChange = {(e) => {setCurrentMsg(e.target.value)}}
+                onKeyPress = {(e) => {
+                  e.key === "Enter" && sendMsg()
+                }}
             />
-            
             <button onClick={sendMsg}>&#9658;</button>       
         </div>             
     </div>

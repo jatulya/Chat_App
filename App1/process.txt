@@ -23,3 +23,7 @@ In the client ->
  4. Footer contains the area we type our message [a code -> &#9658 is for right-pointing arrow]
  5. Create an area to send the text message and do its backend
  6. Now, the front end listen to any changes/event being done to the socket/backend. Done using useEffect
+ 7. we create an empty list to add the msgs being sent
+ 8. We map through this list and display each msg on the screen.
+    we check the username of the message data. If it's the same as the logged in user,
+    then we keep the id as you, else it is "other". different styles are given for the tag with id-s you and other
