@@ -29,7 +29,6 @@ function Chat({socket, username, room}) {
       //msgList contains the data with author, room and msg type, not just msg
       //we only display the msg from it
       setMsgList((list) => [...list, data]);
-      console.log(msgList)
     })
     return () => {
       socket.off("receive_msg");
