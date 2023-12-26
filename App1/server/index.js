@@ -33,6 +33,7 @@ io.on("connection", (socket) =>{
     
     socket.on('send_msg', (data) => {
         //emits the msg send to the socket to every user logged in to the same room
+        console.log(data)
         socket.to(data.room).emit("receive_msg", data);
     })
     
