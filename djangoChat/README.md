@@ -13,3 +13,5 @@ create a folder to add template files.
   this line of code takes the django to go into folder to go as template files
 7. Create urls.py in chat and add paths
 8. In views.py, add the necessary functions
+9. In djangoChat, add path('' , include("chat.urls")), to main urls.py file
+10. To run the server -> python manage.py runserver
