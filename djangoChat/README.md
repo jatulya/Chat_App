@@ -15,3 +15,18 @@ create a folder to add template files.
 8. In views.py, add the necessary functions
 9. In djangoChat, add path('' , include("chat.urls")), to main urls.py file
 10. To run the server -> python manage.py runserver
+11. Create models in models.py/chat ->
+    models are  like tables in database and we describe fields here
+    - name = models.CharField(max_length=100)
+    we created Room and Message classes here
+12. make migrations to the django database by running the command  below:
+  python manage.py makemigrations
+  python manage.py migrate
+13. Create superuse -> admin
+  python manage.py createsuperuser
+14. Register the models in admin.py
+    from .models import Room, Message
+    admin.site.register(Room)
+
+
+    
