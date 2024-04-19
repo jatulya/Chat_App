@@ -31,6 +31,11 @@ create a folder to add template files.
 we first check if the entered room exists.
   for that, we create a path and view named checkroom
   activate the form
+  check if the room exists.
+    if yes -> go to the room url
+    else -> create a room in db and go to the room
+  in the function room, return details of the room to room.html
+
 
 
 

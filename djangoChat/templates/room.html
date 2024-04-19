@@ -56,11 +56,11 @@ body {
 </head>
 <body>
 
-<h2>{{room}} - DjChat</h2>
+<h2>{} - DjChat</h2>
 
 <div id="display">
 
-<!-- <div class="container darker">
+<!--<div class="container darker">
   <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
   <span class="time-left">20th, April 2021</span>
 </div> -->
@@ -103,13 +103,12 @@ body {
 
     <form id="post-form">
         {% csrf_token %}
-        <input type="hidden" name="username" id="username" value="{{username}}"/>
-        <input type="hidden" name="room_id" id="room_id" value="{{room_details.id}}"/>
+        <input type="hidden" name="username" id="username"/>
+        <input type="hidden" name="room_id" id="room_id" />
         <input type="text" name="message" id="message" width="100px" />
         <input type="submit" value="Send">
     </form>
 </div>
-
 
 </body>
   
