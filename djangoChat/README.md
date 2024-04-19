@@ -25,8 +25,13 @@ create a folder to add template files.
 13. Create superuse -> admin
   python manage.py createsuperuser
 14. Register the models in admin.py
-    from .models import Room, Message
-    admin.site.register(Room)
+  from .models import Room, Message
+  admin.site.register(Room)
+15. Now we are creating a function where user enters a room number and we display the room if it exists or create one and  display it if it does not exists
+we first check if the entered room exists.
+  for that, we create a path and view named checkroom
+  activate the form
+
 
 
     
