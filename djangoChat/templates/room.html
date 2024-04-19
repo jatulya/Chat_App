@@ -52,19 +52,14 @@ body {
   color: #999;
 }
 </style>
+<!-- ajax import msg-->
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 </head>
 <body>
 
-<h2>{} - DjChat</h2>
+<h2>{{room}} - DjChat</h2>
 
 <div id="display">
-
-<!--<div class="container darker">
-  <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
-  <span class="time-left">20th, April 2021</span>
-</div> -->
-
 </div>
 
 <div class="container">
@@ -102,15 +97,36 @@ body {
     </style>
 
     <form id="post-form">
+    <!-- we are posting the msg using ajax, not post or get method so that  page does not refresh -->
         {% csrf_token %}
-        <input type="hidden" name="username" id="username"/>
-        <input type="hidden" name="room_id" id="room_id" />
+        <input type="hidden" name="username" id="username" value="{{username}}"/>
+        <input type="hidden" name="room_id" id="{{room_details.room_id}}" value="room_id" />
         <input type="text" name="message" id="message" width="100px" />
         <input type="submit" value="Send">
     </form>
 </div>
 
 </body>
-  
+<!--ajax script-->
+<script type="text/javascript">
+  $(document).on('submit','#post-form',function(e){ //on clicking submit button of the div with id = post-form
+    e.preventDefault(); //prevent default reloading of the page
+    //using ajax to send and receive data to db
+    $.ajax({
+      type:'POST', //method is post
+      url:'/send', //new url
+      data:{
+          username:$('#username').val(),
+          room_id:$('#room_id').val(),
+          message:$('#message').val(),
+        csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+      },
+      success: function(data){
+         alert(data)
+      }
+    });
+    document.getElementById('message').value = '' //clear text box after each submission
+  });
+</script>
 
 </html>

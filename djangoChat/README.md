@@ -35,7 +35,8 @@ we first check if the entered room exists.
     if yes -> go to the room url
     else -> create a room in db and go to the room
   in the function room, return details of the room to room.html
-
+16. we are sending msgs through ajax so that refreshing  is not required. import ajax query on the top and write the code in the bottom in room.html
+17. create a new url pattern and view for sending and storing the message
 
 
 
